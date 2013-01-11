@@ -3,6 +3,7 @@ package main
 type Game struct {
 	running bool
 	server  *Server
+	db *Database
 }
 
 func NewGame() *Game {
@@ -10,7 +11,14 @@ func NewGame() *Game {
 }
 
 func (g *Game) Start() {
-	g.running = true
+	// Connect to database
+	g.db = NewDatabase()
+	g.db.Connect()
+	
+	// Start HTTP Server
 	g.server = NewServer()
 	g.server.StartServer()
+
+	// It's all good
+	g.running = true
 }
