@@ -1,1 +1,1 @@
-Go API server for the game [Novi geroi](www.novigeroi.com)
+Go API server for the game [Novi geroi](http://novigeroi.com)
