@@ -4,7 +4,6 @@ import (
 	_ "github.com/bmizerany/pq"
 	"github.com/astaxie/beedb"
 	"database/sql"
-	"log"
 )
 
 type Database struct {
@@ -19,10 +18,10 @@ func NewDatabase () *Database {
 }
 
 func (db *Database) Connect () {
-	db_db, err := sql.Open("postgres", "user=adsms dbname=novigeroi password=password sslmode=disable")
+	db_db, err := sql.Open("postgres", "user=adsms dbname=novigeroi password=adsms sslmode=disable")
 	db.db = db_db;
 	if (err != nil) {
-		log.Fatal(err)
+		panic(err.Error())
 	}
 
 	// Beedb ORM
@@ -31,8 +30,4 @@ func (db *Database) Connect () {
 
 	orm := beedb.New(db.db, "pg")
 	db.orm = &orm
-}
-
-func (db *Database) Orm () beedb.Model {
-	return *db.orm
 }

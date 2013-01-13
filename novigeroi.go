@@ -1,8 +1,7 @@
 package main
 
-var game *Game
+var game Game
 
 func main() {
-	game := NewGame()
 	game.Start()
 }

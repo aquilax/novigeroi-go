@@ -7,10 +7,6 @@ type Game struct {
 	user *User
 }
 
-func NewGame() *Game {
-	return &Game{}
-}
-
 func (g *Game) Start() {
 	// Connect to database
 	g.db = NewDatabase()
