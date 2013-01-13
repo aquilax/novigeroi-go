@@ -17,3 +17,8 @@ func (s *Server) StartServer() {
 	log.Printf("Starting server on port: %s\n", s.port)
 	log.Fatal(http.ListenAndServe(s.port, nil))
 }
+
+func (s *Server) AddHandler (pattern string, handler http.Handler) {
+	http.Handle(pattern, handler)
+}
+
